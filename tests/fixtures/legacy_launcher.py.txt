@@ -1,0 +1,16 @@
+"""Skill entry point; source location is configured by install_skill.py."""
+import json
+from pathlib import Path
+import sys
+
+skill_dir = Path(__file__).resolve().parent.parent
+location = skill_dir / "monitor-location.json"
+root = (Path(json.loads(location.read_text(encoding="utf-8"))["source"])
+        if location.exists() else skill_dir.parents[2])
+if not (root / "codex_monitor" / "cli.py").is_file():
+    raise SystemExit("codex-monitor source not found; reinstall the skill from the checkout")
+sys.path.insert(0, str(root))
+from codex_monitor.cli import main
+
+if __name__ == "__main__":
+    raise SystemExit(main())

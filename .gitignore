@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.codex-monitor/
+.test-state/
+*.egg-info/
+dist/
+build/
+.omx/
+DESIGN.md
+DISTRIBUTION_PLAN.md
+.env
+.env.*
+!.env.example

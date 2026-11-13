@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "codex-training-monitor"
+dynamic = ["version"]
+description = "Durable training supervision and event-driven Codex conversation continuation"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+codex-monitor = "codex_monitor.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["codex_monitor*"]
+namespaces = false
+
+[tool.setuptools.dynamic]
+version = {attr = "codex_monitor.__version__"}
+
+[tool.setuptools.package-data]
+codex_monitor = ["skill_templates/SKILL.md", "skill_templates/monitor.py"]
